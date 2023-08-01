@@ -8,9 +8,10 @@ class Animals:
         print(f'Покормили {self.name}')
 
 
-class Gooses:
-    name = ''
-    weight = 0
+class Gooses(Animals):
+
+    def gather_eggs(self):
+        print(f'Собираем яйца у {self.name}')
 
 
 class Cows:
@@ -39,11 +40,9 @@ class Ducks:
 
 
 if __name__ == '__main__':
-    my_cow_1 = Animals()
-    my_cow_1.type = Cows()
-    my_cow_1.type.name = 'Манька'
-    my_goose_1 = Gooses()
-    my_goose_1.name = 'Серый'
-    print(my_goose_1.name)
-    print(my_cow_1.type.name)
-
+    goose_1 = Gooses('Серый', '1')
+    goose_1.gather_eggs()
+    goose_1.feed()
+    goose_2 = Gooses(name='Белый', weight='2')
+    print(f'Вес у гуся {goose_2.name} - {goose_2.weight}')
+    goose_2.feed()
