@@ -1,5 +1,7 @@
 class Animal:
 
+    voice = ''
+
     def __init__(self, name, weight):
         self.name = name
         self.weight = weight
@@ -7,67 +9,59 @@ class Animal:
     def feed(self):
         print(f'Покормили {self.name}')
 
+    def say(self):
+        print(self.voice)
 
-class Bird:
+
+class Bird(Animal):
 
     def get_eggs(self):
-        print(f'Собрали яйца')
+        print(f'Собрали яйца у {self.name}')
 
 
-class Milk:
+class Milk(Animal):
 
     def get_milk(self):
         print(f'Подоили')
 
 
-class Goose(Animal, Bird):
+class Goose(Bird):
 
     type_animal = 'гусь'
-
-    def say(self):
-        print('Га Га Га')
+    voice = 'Га Га Га'
 
 
-class Cow(Animal, Milk):
+class Cow(Milk):
 
     type_animal = 'корова'
-
-    def say(self):
-        print('Муууу')
+    voice = 'Муууу'
 
 
 class Sheep(Animal):
 
     type_animal = 'овца'
-
-    def say(self):
-        print('Беее')
+    voice = 'Беее'
 
     def cut(self):
         print(f'Подстригли {self.type_animal} {self.name}')
 
 
-class Chicken(Animal, Bird):
+class Chicken(Bird):
 
     type_animal = 'курица'
-    def say(self):
-        print('Ко Ко Ко')
+    voice = 'Ко Ко Ко'
 
 
-class Goat(Animal, Milk):
+class Goat(Milk):
 
     type_animal = 'коза'
-
-    def say(self):
-        print('Мееее')
+    voice = 'Мееее'
 
 
-class Duck(Animal, Bird):
+class Duck(Bird):
 
     type_animal = 'утка'
-
-    def say(self):
-        print('Кря Кря Кря')
+    voice = 'Кря Кря Кря'
 
 
 if __name__ == '__main__':
@@ -97,3 +91,4 @@ if __name__ == '__main__':
 
     print(f'Общий вес животных - {sum_weight}')
     print(f'Самое тяжелое животное - {max_animal.type_animal} {max_animal.name}')
+    chicken_1.say()
