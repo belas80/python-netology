@@ -15,8 +15,10 @@ class Animal:
 
 class Bird(Animal):
 
+    type_animal = ''
+
     def get_eggs(self):
-        print(f'Собрали яйца у {self.name}')
+        print(f'Собрали яйца у {self.type_animal} {self.name}')
 
 
 class Milk(Animal):
@@ -91,4 +93,3 @@ if __name__ == '__main__':
 
     print(f'Общий вес животных - {sum_weight}')
     print(f'Самое тяжелое животное - {max_animal.type_animal} {max_animal.name}')
-    chicken_1.say()
