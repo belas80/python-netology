@@ -5,9 +5,6 @@ def get_shop_list_by_dishes(dishes, person_count):
 
     result = {}
     for x in dishes:
-        if x not in cook_book:
-            print(f'Блюда "{x}" нет в списке!')
-            exit(1)
         for y in cook_book[x]:
             if y['ingredient_name'] not in result:
                 result[y['ingredient_name']] = {'measure': y['measure'], 'quantity': int(y['quantity']) * person_count}
