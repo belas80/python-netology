@@ -2,7 +2,7 @@ import json
 import os
 
 my_path = './sorted'
-new_file = './sorted.txt'
+new_file = 'sorted.txt'
 
 list_files = os.listdir(my_path)
 dict_files = []
