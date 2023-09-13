@@ -16,7 +16,7 @@ def get_shop_list_by_dishes(dishes, person_count):
     return result
 
 
-with open('recipes_lesson7.txt', 'r') as f:
+with open('recipes.txt', 'r') as f:
     list_book = []
     for i in f.read().split(sep='\n\n'):
         list_book.append(i.split('\n'))

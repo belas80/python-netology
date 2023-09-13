@@ -1,11 +1,8 @@
 import json
 import os
 
-my_path = './lesson7_sorted'
+my_path = './sorted'
 new_file = './sorted.txt'
-
-if os.path.exists(new_file):
-    os.remove(new_file)
 
 list_files = os.listdir(my_path)
 dict_files = []
@@ -20,10 +17,10 @@ for n in list_files:
 
 sort_files = sorted(dict_files, key=lambda x: x['count_line'])
 
-for n in sort_files:
-    with open(new_file, 'a') as f:
-        f.writelines('Файл: ' + n['path'] + '\n')
-        f.writelines('Количество строк:  ' + str(n['count_line']) + '\n')
-        f.writelines(''.join(n['content']) + '\n\n')
+with open(new_file, 'w') as f:
+    for n in sort_files:
+        f.write('Файл: ' + n['path'] + '\n')
+        f.write('Количество строк:  ' + str(n['count_line']) + '\n')
+        f.write(''.join(n['content']) + '\n\n')
 
 print(f'Создан файл {new_file}')
