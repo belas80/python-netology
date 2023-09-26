@@ -31,11 +31,14 @@ def count_words(words):
     return count_sorted
 
 
+def get_top_words(words, quantity=10):
+
+    number_item = 1
+    for i in words[0:quantity]:
+        print(f"{number_item}. {i[0]}: {i[1]}")
+        number_item += 1
+
+
 words_from_json = get_words_from_json("newsafr.json")
-top_words_json = count_words(words_from_json)
-
-number_item = 1
-for i in top_words_json[0:10]:
-    print(f"{number_item}. {i[0]}: {i[1]}")
-    number_item += 1
-
+counted_words = count_words(words_from_json)
+get_top_words(counted_words)
