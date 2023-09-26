@@ -18,7 +18,7 @@ def get_words_from_json(file):
     return news_words
 
 
-def get_top_words_json(words):
+def count_words(words):
 
     count = {}
     for w in words:
@@ -32,7 +32,7 @@ def get_top_words_json(words):
 
 
 words_from_json = get_words_from_json("newsafr.json")
-top_words_json = get_top_words_json(words_from_json)
+top_words_json = count_words(words_from_json)
 
 number_item = 1
 for i in top_words_json[0:10]:
