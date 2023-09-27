@@ -1,4 +1,5 @@
 import json
+import xml.etree.ElementTree as ETr
 from pprint import pprint
 from collections import Counter
 
@@ -14,6 +15,21 @@ def get_words_from_json(file):
             for w in list_words:
                 if len(w) > 6:
                     news_words += [w]
+
+    return news_words
+
+
+def get_words_from_xml(file):
+
+    parser = ETr.XMLParser(encoding='utf-8')
+    tree = ETr.parse(file, parser)
+    root = tree.getroot()
+    news_words = []
+    for e in root.findall('channel/item'):
+        list_words = e.find('description').text.split()
+        for w in list_words:
+            if len(w) > 6:
+                news_words += [w]
 
     return news_words
 
@@ -39,6 +55,10 @@ def get_top_words(words, quantity=10):
         number_item += 1
 
 
+print(f'\nТоп самых часто встречающихся слов длиннее 6 символов из JSON:')
 words_from_json = get_words_from_json("newsafr.json")
-counted_words = count_words(words_from_json)
-get_top_words(counted_words)
+get_top_words(count_words(words_from_json))
+
+print(f'\nТоп самых часто встречающихся слов длиннее 6 символов из XML:')
+words_from_xml = get_words_from_xml('newsafr.xml')
+get_top_words(count_words(words_from_xml))
