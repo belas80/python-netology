@@ -62,3 +62,7 @@ get_top_words(count_words(words_from_json))
 print(f'\nТоп самых часто встречающихся слов длиннее 6 символов из XML:')
 words_from_xml = get_words_from_xml('newsafr.xml')
 get_top_words(count_words(words_from_xml))
+
+# Еще один вариант
+print('\n')
+print(Counter(words_from_xml).most_common(10))
