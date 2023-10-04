@@ -1,3 +1,5 @@
+import os.path
+
 import requests
 from pprint import pprint
 
@@ -8,8 +10,9 @@ class YaUploader:
 
     def upload(self, file_path: str):
         """Метод загруджает файл file_path на яндекс диск"""
+        file_for_upload = os.path.split(file_path)[1]
         headers = {'Authorization': 'OAuth ' + self.token}
-        params = {'path': '/' + file_path, 'overwrite': 'true'}
+        params = {'path': '/' + file_for_upload, 'overwrite': 'true'}
         resp_geturl = requests.get(
             'https://cloud-api.yandex.net/v1/disk/resources/upload',
             params=params,
