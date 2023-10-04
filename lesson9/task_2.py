@@ -1,6 +1,5 @@
 import os.path
 import requests
-from pprint import pprint
 
 
 class YaUploader:
@@ -8,7 +7,7 @@ class YaUploader:
         self.token = token
 
     def upload(self, file_path: str):
-        """Метод загруджает файл file_path на яндекс диск"""
+        """Метод загружает файл file_path на яндекс диск"""
         file_for_upload = os.path.split(file_path)[1]
         headers = {'Authorization': 'OAuth ' + self.token}
         params = {'path': '/' + file_for_upload, 'overwrite': 'true'}
