@@ -16,12 +16,15 @@ class YaUploader:
             params=params,
             headers=headers
         )
-        resp_geturl.raise_for_status()
+        # resp_geturl.raise_for_status()
+        if resp_geturl.status_code != requests.codes.ok:
+            return f'При получении ссылки для загрузки произошла ошибка (код: {resp_geturl.status_code})'
         href = resp_geturl.json()['href']
         with open(file_path, 'rb') as f:
             response = requests.put(href, files={"file": f})
-            response.raise_for_status()
-        return response
+        if response.status_code not in (requests.codes.created, requests.codes.accepted):
+            return f'При загрузке файла произошла ошибка (код: {response.status_code})'
+        return f'Файл {file_for_upload} успешно загружен на Яндекс.Диск'
 
 
 if __name__ == '__main__':
@@ -29,3 +32,4 @@ if __name__ == '__main__':
         my_token = t.read()
     uploader = YaUploader(my_token)
     result = uploader.upload('file_for_upload.png')
+    print(result)
